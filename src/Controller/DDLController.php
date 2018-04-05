@@ -22,16 +22,16 @@ class EnrollmentController
               'config' => $config
           ],
           'entries' => $config['entries'],
-          'title' => 'Manage Enrollments',
+          'title' => 'Show Enrollments',
       ];
   }
   /**
-  * @Request({"entries": "array"}, csrf=true)
-  * @Access(admin=true)
+  * @Request({"entry": "array"}, csrf=true)
+  * @Access(admin=false)
   */
-  public function saveAction($entries = [])
+  public function saveAction($entry = [])
   {
-    App::config('pkenrollment')->set('entries', $entries);
+    App::config('pkenrollment')->array_push('entries', $entry);
     return ['message' => 'success'];
   }
 
@@ -44,10 +44,9 @@ class EnrollmentController
     $config = $module->config;
     return [
       '$view' => [
-        'title' => __("Enrollments"),
+        'title' => __("Enrollment"),
         'name' => 'pkenrollment:views/index.php'
-      ],
-      'entries' => $config['entries']
+      ]
     ];
   }
 }
