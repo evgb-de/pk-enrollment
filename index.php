@@ -22,7 +22,7 @@ return [
   'routes' => [
     '@pkenrollment' => [
       'path' => '/pkenrollment',
-      'controller' => 'Pagekit\\pkenrollment\\Controller\\DDLController'
+      'controller' => 'Pagekit\\pkenrollment\\Controller\\EnrollmentController'
     ]
   ],
 
@@ -34,7 +34,7 @@ return [
 
   'menu' => [
     'pkenrollment' => [
-      'label'  => 'DDls',
+      'label'  => 'Enrollments',
       'icon'   => 'app/system/assets/images/placeholder-icon.svg',
       'url'    => '@pkenrollment',
       'active' => '@pkenrollment/*',

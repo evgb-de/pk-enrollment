@@ -1,12 +1,10 @@
 $(function () {
   var vm = new Vue({
-    el: '#pkenrollment-table',
+    el: "#pkenrollment-table",
     data: {
-      entries:              window.$data.config.entries,  
+      entries: window.$data.config.entries 
     },
 
-    methods: {
-      
-    }
-  })
+    methods: {}
+  });
 });
