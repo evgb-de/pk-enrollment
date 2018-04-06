@@ -25,6 +25,7 @@
   'true' => 'Ja',
   'false' => 'Nein',
   'Reachable' => 'Erreichbar',
+  'Enrollments' => 'Anmeldungen',
   'one: First Participant|more: %count%. Participant' => 'one: ersten Teilnehmers|more: %count%. Teilnehmers',
   '{0} None Enrolled|one: One Enrollment|more: %count% Enrollments' => '{0} Keine Anmeldungen|one: Eine Anmeldung|more: %count% Anmeldungen',
   'There is no one enrolled yet!' => 'Bisher hat sich noch niemand angemeldet!',
