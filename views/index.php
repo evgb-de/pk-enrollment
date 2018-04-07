@@ -221,29 +221,43 @@ kleineren Gruppen auch ohne Aufsichtsperson unterwegs sein:</label>
         </label>
       </div>
       <h2>Bitte prüfen Sie Ihre Angaben:</h2>
-      <h3>Erziehungsberechtigte:</h3>
-      <dl>
-        Prename and Name: {{entry.EBName}}
-        Address:          {{entry.EBAddress}}
-        PLZ, Place:       {{entry.EBLocation}}
-        Telephone Number: {{entry.EBTel}}
-        Mobile Number:    {{entry.EBMobile}}
-        E-Mail:           {{entry.EBEmail}}
-        Reachable:        {{entry.EBReachable | trans}}
-      </dl>
-      <hr>
-      <div v-for="p in entry.participants">
-        <h2>Participant{{p.number}}:</h2>
-        <small>Teilnahmegebühr des {{p.number}}. Teilnehmers: {{ p.price }}€</small>
-        Prename and Name{{p.name}}
-        Date of Birth{{p.dateofbirth}}
-        Important Infos{{p.importantInfo}}
-        Hausarzt{{p.Hausarzt}}
-        Address of the Hausarzt{{p.docAddress}}
-        Telefone Number of the Hausarzt{{p.docTel}}
-        Krankenkasse{{p.kk}}
-        Bloodtype{{p.bloodtype}}
-        <hr>
+      
+      <div class="uk-grid">
+        <div class="uk-width-medium-1-2 ">
+        <h3>Erziehungsberechtigte:</h3>
+          <dl>
+            <dt>Vorname und Nachname: </dt><dd>{{entry.EBName}}</dd>
+            <dt>Adresse:          </dt><dd>{{entry.EBAddress}}</dd>
+            <dt>PLZ, Ort:       </dt><dd>{{entry.EBLocation}}</dd>
+            <dt>Telefon : </dt><dd>{{entry.EBTel}}</dd>
+            <dt>Handy Nummer:    </dt><dd>{{entry.EBMobile}}</dd>
+            <dt>E-Mail:           </dt><dd>{{entry.EBEmail}}</dd>
+            <dt>Sie sind Erreichbar:        </dt><dd>{{entry.EBReachable | trans}}</dd>
+            <dt>Weitere Kontakte</dt><dd>{{entry.EBOtherContacts}}</dd>
+          </dl>
+        </div>
+        <div class="uk-width-medium-1-2 ">
+          <div v-for="p in entry.participants">
+            <h3>Teilnehmer {{p.number}}:</h3>
+            <small>Teilnahmegebühr des {{p.number}}. Teilnehmers: {{ p.price }}€</small>
+            <dt>Vorname und Nachname   </dt><dd>{{p.name}}</dd>
+            <dt>Geburtsdatum  </dt><dd>{{p.dateofbirth}}</dd>
+            <dt>Wichtige Infos  </dt><dd>{{p.importantInfo}}</dd>
+            <dt>Hausarzt   </dt><dd>{{p.Hausarzt}}</dd>
+            <dt>Adresse des Hausarztes </dt><dd>{{p.docAddress}}</dd>
+            <dt>Telefonnummer des Hausarztes  </dt><dd>{{p.docTel}}</dd>
+            <dt>Krankenkasse   </dt><dd>{{p.kk}}</dd>
+            <dt>Blutgruppe  </dt><dd>{{p.bloodtype}}</dd>
+            <dt>Badeerlaubnis: </dt><dd>{{p.bathing | trans}}</dd>
+            <dt>Teilnehmer/in ist Schwimmer:        </dt><dd>{{p.swimmer | trans}}</dd>
+            <dt>Der/die Teilnehmer/in darf im Privat-PKW der Mitarbeiter mitgenommen werden:        </dt><dd>{{p.pkw | trans}}</dd>
+            <dt>Der/die Teilnehmer/in darf unter verantwortlichen Gegebenheiten (z.B. bei Zoobesuch, Stadtbummel) in
+kleineren Gruppen auch ohne Aufsichtsperson unterwegs sein:</dt><dd>{{p.withoutMA | trans}}</dd>
+            <dt>Besteht für den/die Teilnehmer/in eine Haftplichtversicherung?</dt><dd>{{p.insurance | trans}}</dd>
+            <dt>Der/die Teilnehmer/in darf, wenn dies von einem Arzt für nötig gehalten wird, geimpft oder operiert werden:</dt><dd>{{p.operator | trans}}</dd>
+            <dt>Ist der/ die Teilnehmer/in gegen Wundstarkrampf (Tetanus) geimpft?</dt><dd>{{p.tetanus | trans}} {{p.tetanusDate}}</dd>
+          </div>
+        </div>
       </div>
     </div>
     <hr>

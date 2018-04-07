@@ -61,6 +61,7 @@ $(function () {
                 } else {
                     console.log(this.entry);
                     this.$http.post("/zeltlager/save", { entry: this.entry });
+                    window.open("/thanks", '_self');
                 }
               },
             removeParticipant: function(){
