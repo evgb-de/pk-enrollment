@@ -26,12 +26,17 @@ class EnrollmentController
       ];
   }
   /**
+  * @Route("/save")
   * @Request({"entry": "array"}, csrf=true)
-  * @Access(admin=false)
   */
   public function saveAction($entry = [])
   {
-    App::config('pkenrollment')->array_push('entries', $entry);
+    $module = App::module('pkenrollment');
+    $config = $module->config;
+    $entries = $config['entries'];
+    array_push($entries, $entry);
+
+    App::config('pkenrollment')->set('entries', $entries);
     return ['message' => 'success'];
   }
 

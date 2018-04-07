@@ -20,7 +20,7 @@ return [
   ],
 
   'routes' => [
-    '@pkenrollment' => [
+    '@zeltlager' => [
       'path' => '/zeltlager',
       'controller' => 'Pagekit\\pkenrollment\\Controller\\EnrollmentController'
     ]
@@ -36,8 +36,8 @@ return [
     'pkenrollment' => [
       'label'  => 'Enrollments',
       'icon'   => 'packages/evgb-de/pk-enrollment/icon.svg',
-      'url'    => '@pkenrollment',
-      'active' => '@pkenrollment/*',
+      'url'    => '@zeltlager',
+      'active' => '@zeltlager/*',
       'access' => 'pkenrollment: manage'
     ]
   ],
