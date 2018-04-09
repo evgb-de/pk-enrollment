@@ -1,4 +1,8 @@
 $(function () {
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        return re.test(email);
+        };
     var vm = new Vue({
         el: "#pkenrollment",
 
@@ -60,7 +64,10 @@ $(function () {
                     this.agreeDanger = true;
                 } else {
                     console.log(this.entry);
-                    this.$http.post("/zeltlager/save", { entry: this.entry });
+                    this.$http.post("/zeltlager/save", { entry: this.entry }, function(data,status,xhr){
+                        console.log(data);
+                        console.log(status);
+                    });
                     window.open("/thanks", '_self');
                 }
               },
@@ -165,16 +172,16 @@ $(function () {
                             if( this.entry.EBName === "" ) {
                                 this.isDEBName = true;
                             }
-                            if( this.entry.EBAddress === "" ) {
+                            if( this.entry.EBAddress === "") {
                                 this.isDEBAddress = true;
                             }
                             if( this.entry.EBLocation === "" ) {
                                 this.isDEBLocation = true;
                             }
                             if( this.entry.EBTel === "" && this.entry.EBMobile === "" ) {
-                                
+                                validated = false;
                             }
-                            if( this.entry.EBEmail === "") {
+                            if( this.entry.EBEmail === ""|| validateEmail(this.entry.EBEmail) === false) {
                                 this.isDEBEmail = true;
                             }
                         } else {
@@ -183,7 +190,7 @@ $(function () {
                         if (this.entry.EBTel === "" && this.entry.EBMobile === ""){
                             this.isDEBTel = true;
                             
-                        } else if (validated === true) {
+                        } else if (validated === true && validateEmail(this.entry.EBEmail)) {
                             this.page += 1;
                         }
                     } else if (this.page === 2) {
