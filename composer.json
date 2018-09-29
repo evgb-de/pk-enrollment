@@ -1,9 +1,9 @@
 {
     "name": "pkenrollment",
-    "version": "0.2",
+    "version": "0.3",
     "type": "pagekit-extension",
     "title": "Erollment Form",
-    "description": "Zeltlager Anmeldungen einsammeln",
+    "description": "Anmeldungen einsammeln",
     "license": "MIT",
     "authors": [
       {

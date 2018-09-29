@@ -3,15 +3,10 @@
 <table id="pkenrollment-table" class="uk-table">
   <thead>
     <tr>
-      <th>Erziehungsberechtigter</th>
       <th>Adresse</th>
       <th>PLZ, Ort</th>
       <th>Telefon</th>
-      <th>handy</th>
       <th>E-mail</th>
-      <th>Ist Erreichbar?</th>
-      <th>Weitere Kontakte</th>
-      <th>Teilnehmer</th>
     </tr>
   </thead>
   <tbody>

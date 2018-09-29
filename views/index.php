@@ -4,6 +4,7 @@
       // $view->style('datepicker', '/app/assets/uikit/css/components/datepicker.css', 'uikit');
 ?>
 <!--<link rel="stylesheet" href="/app/assets/uikit/css/components/datepicker.min.css?v=da7c">-->
+<!-- ToDo: make user-definable enrollments possible, let users define fields, titels and pages ... -->
 <div id="pkenrollment" >
   <h1 class="uk-heading-line uk-text-center">
     <span>Go West, Go Wild</span> <br>

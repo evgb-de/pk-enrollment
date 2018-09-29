@@ -18,10 +18,11 @@ return [
   'resources' => [
     'pkenrollment:' => ''
   ],
+// ToDo: Somehow standardize the Shorthand @xxx and make the Path user-defineable so that one can Customize his Enrollment Page 
 
   'routes' => [
-    '@zeltlager' => [
-      'path' => '/zeltlager',
+    '@musical' => [
+      'path' => '/musical',
       'controller' => 'Pagekit\\pkenrollment\\Controller\\EnrollmentController'
     ]
   ],
@@ -31,13 +32,12 @@ return [
     'entries' => [
     ]
   ],
-
   'menu' => [
     'pkenrollment' => [
       'label'  => 'Enrollments',
       'icon'   => 'packages/evgb-de/pk-enrollment/icon.svg',
-      'url'    => '@zeltlager',
-      'active' => '@zeltlager/*',
+      'url'    => '@musical',
+      'active' => '@musical/*',
       'access' => 'pkenrollment: manage'
     ]
   ],
