@@ -10,61 +10,30 @@ $(function () {
             page: 1,
             participants: 1,
             agreeDanger: false,
-            isDEBName: "",
-            isDEBAddress: "",
-            isDEBLocation: "",
-            isDEBTel: "",
-            isDEBEmail: "",
             entry: {
-                "EBName": "",
-                "EBAddress": "",
-                "EBLocation": "",
-                "EBTel": "",
-                "EBMobile": "",
-                "EBEmail": "",
-                "EBReachable": "",
-                "EBOtherContacts": "",
-                "agreeBox": "",
-                "participants": [{
+                participants: [{
                     "number": 1,
-                    "name": "",
-                    "dateofbirth": "",
-                    "price": 170,
-                    "importantInfo": "",
-                    "bathing": "",
-                    "swimmer": "",
-                    "pkw": "",
-                    "withoutMA": "",
-                    "insurance": "",
-                    "operator": "",
-                    "doctor": "",
-                    "docAddress": "",
-                    "docTel": "",
-                    "kk": "",
-                    "bloodtype": "",
-                    "tetanus": "",
-                    "tetanusDate": "",
-                    "isDname": false,
-                    "isDdateofbirth": false,
-                    "isDbathing": false,
-                    "isDswimmer": false,
-                    "isDpkw": false,
-                    "isDwithoutMA": false,
-                    "isDinsurance": false,
-                    "isDoperator": false,
-                    "isDtetanus": false,
-                }
-                ]
+                    "Prename": "",
+                    "Name": "",
+                    "Street": "",
+                    "Number": "",
+                    "PLZ": "",
+                    "Wohnort": "",
+                    "Tel": "",
+                    "E-Mail": "",
+                    "Birthday": "",
+                }],
+                "CD": false,
+                "DSGVO-Erklärung": false,
             }
         },
-
         methods: {
             save: function() {
                 if (this.entry.agreeBox === "") {
                     this.agreeDanger = true;
                 } else {
                     console.log(this.entry);
-                    this.$http.post("/zeltlager/save", { entry: this.entry }, function(data,status,xhr){
+                    this.$http.post("/musical/save", { entry: this.entry }, function(data,status,xhr){
                         console.log(data);
                         console.log(status);
                     });
@@ -76,15 +45,6 @@ $(function () {
                 this.entry.participants.splice(-1,1);
             },
             addParticipant: function() {
-                this.participants += 1;
-                var prize = 160;
-                if (this.participants === 2) {
-                    prize = 160;
-                } else if (this.participants === 3) {
-                    prize = 150;
-                } else {
-                    prize = 140;
-                }
                 for (p in this.entry.participants) {
                     this.entry.participants[p].isDname = false;
                     this.entry.participants[p].isDdateofbirth = false;
@@ -133,36 +93,21 @@ $(function () {
                         if (this.entry.participants[p].tetanus === "") {
                             this.entry.participants[p].isDtetanus = true;
                         }
+                    } else {
+                        this.participants += 1
                     }
                 }
                 this.entry.participants.push({
                     "number": this.participants,
-                    "name": "",
-                    "dateofbirth": "",
-                    "price": prize,
-                    "importantInfo": "",
-                    "bathing": "",
-                    "swimmer": "",
-                    "pkw": "",
-                    "withoutMA": "",
-                    "insurance": "",
-                    "operator": "",
-                    "doctor": "",
-                    "docAddress": "",
-                    "docTel": "",
-                    "kk": "",
-                    "bloodtype": "",
-                    "tetanus": "",
-                    "tetanusDate": "",
-                    "isDname": false,
-                    "isDdateofbirth": false,
-                    "isDbathing": false,
-                    "isDswimmer": false,
-                    "isDpkw": false,
-                    "isDwithoutMA": false,
-                    "isDinsurance": false,
-                    "isDoperator": false,
-                    "isDtetanus": false,
+                    "Prename": "",
+                    "Name": "",
+                    "Street": "",
+                    "Number": "",
+                    "PLZ": "",
+                    "Wohnort": "",
+                    "Tel": "",
+                    "E-Mail": "",
+                    "Birthday": "",
                 });
             },
             forth: function() {

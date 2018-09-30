@@ -11,17 +11,10 @@
   </thead>
   <tbody>
     <tr v-for="entry in entries">
-      <td>{{entry.EBName}}</td>
-      <td>{{entry.EBAddress}}</td>
-      <td>{{entry.EBLocation}}</td>
-      <td>{{entry.EBTel}}</td>
-      <td>{{entry.EBMobile}}</td>
-      <td>{{entry.EBEmail}}</td>
-      <td>{{entry.EBReachable | trans}}</td>
-      <td>{{entry.EBOtherContacts}}</td>
-      <td>
-        <code v-for="p in entry.participants">{{p.name}}</code>
-      </td>
+      <td>Straße 02</td>
+      <td>07568</td>
+      <td>0271ccc</td>
+      <td>test@halllo.de</td>
     </tr>
   </tbody>
 </table>

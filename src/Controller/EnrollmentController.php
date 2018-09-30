@@ -3,13 +3,14 @@
 namespace Pagekit\pkenrollment\Controller;
 
 use Pagekit\Application as App;
+/*
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require('../Mail/PHPMailer.php');
 require('../Mail/SMTP.php');
 require('../Mail/Exception.php');
-
+*/
 class EnrollmentController
 {
   /**
@@ -42,6 +43,10 @@ class EnrollmentController
     $entries = $config['entries'];
     array_push($entries, $entry);
     $comma_separated = implode(",", $entry);
+    
+    $body = "";
+    $altbody = "";
+    
     $mail = new PHPMailer;
 
     $mail->isSMTP();                                // Set mailer to use SMTP
@@ -52,9 +57,9 @@ class EnrollmentController
     $mail->SMTPSecure = 'tls';                      // Enable encryption, 'ssl' also accepted
 
     $mail->From = '';                       // From Adress
-    $mail->FromName = 'Musical Anmeldung';
-    $mail->addAddress('', 'Tobiah');        // Add a recipient, Name is optional
-    $mail->addReplyTo('', 'Information');   // Add Reply adress, Name is optional
+    $mail->FromName = '';
+    $mail->addAddress('', 'Name');        // Add a recipient, Name is optional
+    $mail->addReplyTo('', 'Name');   // Add Reply adress, Name is optional
 
     $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
     $mail->isHTML(true);                                  // Set email format to HTML
