@@ -91,10 +91,8 @@
       <div class="uk-form-row">
         <input  type="checkbox" name="dsgvo" id="dsgvo" v-model="entry.dsgvo" value="zugestimmt">
         <label :class="{ 'uk-form-danger': agreeDanger }" for="agreebox">
-          <p>
-            Die hier eingegebenen Daten werden elektronisch gespeichert.<BR>
-            Ich habe die <a href="https://evgb.de/index.php?option=com_content&view=article&id=66&Itemid=105">Datenschutzerklärung</a> gelesen und bin damit einverstanden.
-          </p> 
+          Die hier eingegebenen Daten werden elektronisch gespeichert.
+          Ich habe die <a href="https://evgb.de/index.php?option=com_content&view=article&id=66&Itemid=105">Datenschutzerklärung</a> gelesen und bin damit einverstanden.
         </label>
       </div>
       <div class="uk-form-row">
