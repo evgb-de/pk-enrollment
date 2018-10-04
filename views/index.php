@@ -30,26 +30,15 @@
               <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDname }" type="text" placeholder="Vorname" v-model="p.name">
             </div>
           </div>
-          <div class="uk-width-medium-1-4"><!--Telefon/Handy Nummer-->
-            <div class="uk-form-row">
-                <label class="uk-form-label">Telefon/Handy Nummer</label>
-                <input class="uk-width-large-1-1 " v-bind:class="{ 'uk-form-danger' : p.isDTel}"type="text" placeholder="Handy Nummer" v-model="entry.EBMobile">
-            </div>
-          </div>
-          <div class="uk-width-medium-1-4"><!--E-Mail Adresse-->
-            <div class="uk-form-row">
-              <label class="uk-form-label">E-Mail Adresse</label>
-              <input class="uk-width-large-1-1" v-bind:class="{ 'uk-form-danger' : p.isDEBEmail}"type="text" placeholder="E-Mail Adresse" v-model="entry.EBEmail">
-            </div>
-          </div>
-        </div>
-        <div class="uk-grid">
+          <!-- geschlecht -->
           <div class="uk-width-medium-1-4"><!--Geburtsdatum-->
             <div class="uk-form-row">
               <label class="uk-form-label">Geburtdatum</label>
               <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDBirthday }" type="text" placeholder="Geburtsdatum" v-model="p.Birthday">
             </div>
           </div>
+        </div>
+        <div class="uk-grid">
           <div class="uk-width-medium-1-4"><!--Straße-->
             <div class="uk-form-row">
               <label class="uk-form-label">Straße und Hausnummer</label>
@@ -66,6 +55,18 @@
             <div class="uk-form-row">
               <label class="uk-form-label">Wohnort</label>
               <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDWohnort }" type="text" placeholder="Wohnort" v-model="p.Wohnort">
+            </div>
+          </div>
+          <div class="uk-width-medium-1-4"><!--Telefon/Handy Nummer-->
+            <div class="uk-form-row">
+                <label class="uk-form-label">Telefon/Handy Nummer</label>
+                <input class="uk-width-large-1-1 " v-bind:class="{ 'uk-form-danger' : p.isDTel}"type="text" placeholder="Handy Nummer" v-model="entry.EBMobile">
+            </div>
+          </div>
+          <div class="uk-width-medium-1-4"><!--E-Mail Adresse-->
+            <div class="uk-form-row">
+              <label class="uk-form-label">E-Mail Adresse</label>
+              <input class="uk-width-large-1-1" v-bind:class="{ 'uk-form-danger' : p.isDEBEmail}"type="text" placeholder="E-Mail Adresse" v-model="entry.EBEmail">
             </div>
           </div>
         </div>
