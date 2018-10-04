@@ -45,16 +45,10 @@
               <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDStreet }" type="text" placeholder="Straße und Hausnummer" v-model="p.Street">
             </div>
           </div>
-          <div class="uk-width-medium-1-4"><!--PLZ-->
+          <div class="uk-width-medium-1-4"><!--PLZ, Wohnort-->
             <div class="uk-form-row">
-              <label class="uk-form-label">PLZ</label>
-              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDPLZ }" type="text" placeholder="PLZ" v-model="p.PLZ">
-            </div>
-          </div>
-          <div class="uk-width-medium-1-4"><!--Wohnort-->
-            <div class="uk-form-row">
-              <label class="uk-form-label">Wohnort</label>
-              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDWohnort }" type="text" placeholder="Wohnort" v-model="p.Wohnort">
+              <label class="uk-form-label">PLZ, Wohnort</label>
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDPLZ }" type="text" placeholder="PLZ, Wohnort" v-model="p.PLZ">
             </div>
           </div>
           <div class="uk-width-medium-1-4"><!--Telefon/Handy Nummer-->
@@ -82,53 +76,36 @@
       </div>
     </div>
     <div v-if="page === 2">
-      <h2>Hinweise und Teilnahmebedingungen:</h2>
+      <h2>Weiteres und Zusammenfassung</h2>
+      <div class="uk-form-row">
+        <input  type="checkbox" name="dsgvo" id="dsgvo" v-model="entry.dsgvo" value="zugestimmt">
+        <label :class="{ 'uk-form-danger': agreeDanger }" for="agreebox">
+          Die hier eingegebenen Daten werden elektronisch gespeichert.<BR>
+          Ich habe die <a href="https://evgb.de/index.php?option=com_content&view=article&id=66&Itemid=105">Datenschutzerklärung</a> gelesen und bin damit einverstanden.
+        </label>
+      </div>
       <div class="uk-form-row">
         <input  type="checkbox" name="agreebox" id="agreebox" v-model="entry.agreeBox" value="zugestimmt">
         <label :class="{ 'uk-form-danger': agreeDanger }" for="agreebox">
-          Der/die Teilnehmer/in ist angewiesen worden, den Anordnungen der Verantwortlichen der Freizeit Folge zu leisten. <br>
-          Der/die Teilnehmer/in ist verpflichtet, am Freizeitprogramm teilzunehmen, soweit ihm/ihr dies gesundheitlich zumutbar ist. Haftung bei selbständigen Unternehmungen, die nicht von Mitarbeitern angesetzt sind, übernehmen die Erziehungsberechtigten. <br>
-          Bei Abmeldung von der Maßnahme ist eine Rückerstattung des Beitrags generell nur bis zwei Wochen vor Beginn derselben möglich. <br>
-          Im Rahmen der Maßnahme aufgenommenes Foto- und Filmmaterial wird für die Zwecke der Jungschar und Zeltlagerarbeit verwendet (z.B. Einladungen, Nachtreffen). <br>
-          Ich versichere, das der/die Teilnehmer/in an keiner ansteckenden Krankheit leidet. <br>
+          Möglichweise werden von der Veranstaltung Ton- und Bildaufnahmen gemacht, auf denen die Teilnehmer zu hören bzw. zu sehen sind. Damit bin ich einverstanden.
         </label>
       </div>
       <h2>Bitte prüfen Sie Ihre Angaben:</h2>
-      
       <div class="uk-grid">
-        <div class="uk-width-medium-1-2 ">
-        <h3>Erziehungsberechtigte:</h3>
-          <dl>
-            <dt>Vorname und Nachname: </dt><dd>{{entry.EBName}}</dd>
-            <dt>Adresse:          </dt><dd>{{entry.EBAddress}}</dd>
-            <dt>PLZ, Ort:       </dt><dd>{{entry.EBLocation}}</dd>
-            <dt>Telefon : </dt><dd>{{entry.EBTel}}</dd>
-            <dt>Handy Nummer:    </dt><dd>{{entry.EBMobile}}</dd>
-            <dt>E-Mail:           </dt><dd>{{entry.EBEmail}}</dd>
-            <dt>Sie sind Erreichbar:        </dt><dd>{{entry.EBReachable | trans}}</dd>
-            <dt>Weitere Kontakte</dt><dd>{{entry.EBOtherContacts}}</dd>
-          </dl>
-        </div>
-        <div class="uk-width-medium-1-2 ">
-          <div v-for="p in entry.participants">
+        <div class="uk-width-medium-1-2">
+          <div v-for="p in entry.participants" class="uk-panel-box">
             <h3>Teilnehmer {{p.number}}:</h3>
-            <small>Teilnahmegebühr des {{p.number}}. Teilnehmers: {{ p.price }}€</small>
-            <dt>Vorname und Nachname   </dt><dd>{{p.name}}</dd>
-            <dt>Geburtsdatum  </dt><dd>{{p.dateofbirth}}</dd>
-            <dt>Wichtige Infos  </dt><dd>{{p.importantInfo}}</dd>
-            <dt>Hausarzt   </dt><dd>{{p.Hausarzt}}</dd>
-            <dt>Adresse des Hausarztes </dt><dd>{{p.docAddress}}</dd>
-            <dt>Telefonnummer des Hausarztes  </dt><dd>{{p.docTel}}</dd>
-            <dt>Krankenkasse   </dt><dd>{{p.kk}}</dd>
-            <dt>Blutgruppe  </dt><dd>{{p.bloodtype}}</dd>
-            <dt>Badeerlaubnis: </dt><dd>{{p.bathing | trans}}</dd>
-            <dt>Teilnehmer/in ist Schwimmer:        </dt><dd>{{p.swimmer | trans}}</dd>
-            <dt>Der/die Teilnehmer/in darf im Privat-PKW der Mitarbeiter mitgenommen werden:        </dt><dd>{{p.pkw | trans}}</dd>
-            <dt>Der/die Teilnehmer/in darf unter verantwortlichen Gegebenheiten (z.B. bei Zoobesuch, Stadtbummel) in
-kleineren Gruppen auch ohne Aufsichtsperson unterwegs sein:</dt><dd>{{p.withoutMA | trans}}</dd>
-            <dt>Besteht für den/die Teilnehmer/in eine Haftplichtversicherung?</dt><dd>{{p.insurance | trans}}</dd>
-            <dt>Der/die Teilnehmer/in darf, wenn dies von einem Arzt für nötig gehalten wird, geimpft oder operiert werden:</dt><dd>{{p.operator | trans}}</dd>
-            <dt>Ist der/ die Teilnehmer/in gegen Wundstarkrampf (Tetanus) geimpft?</dt><dd>{{p.tetanus | trans}} {{p.tetanusDate}}</dd>
+            <!--<small>Teilnahmegebühr des {{p.number}}. Teilnehmers: {{ p.price }}€</small>-->
+            <ul>
+              <li>{{ p.Prename}}</li>
+              <li>{{ p.Name}}</li>
+              <li>{{ p.Gende}}</li>
+              <li>{{ p.Birthday}}</li>
+              <li>{{ p.Street}}</li>
+              <li>{{ p.PLZ}}</li>
+              <li>{{ p.Tel}}</li>
+              <li>{{ p.E-Mail}}</li>
+            </ul>
           </div>
         </div>
       </div>
