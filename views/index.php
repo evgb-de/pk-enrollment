@@ -105,19 +105,19 @@
       </div>
       <h2>Bitte prüfen Sie Ihre Angaben:</h2>
       <div class="uk-grid">
-        <div class="uk-width-medium-1-2">
-          <div v-for="p in entry.participants" class="uk-panel-box">
+        <div v-for="p in entry.participants" class="uk-width-medium-1-2">
+          <div class="uk-panel-box">
             <h3>Teilnehmer {{p.number}}:</h3>
             <!--<small>Teilnahmegebühr des {{p.number}}. Teilnehmers: {{ p.price }}€</small>-->
             <ul>
               <li>{{ p.Prename}}</li>
               <li>{{ p.Name}}</li>
-              <li>{{ p.Gende}}</li>
+              <li>{{ p.Gender}}</li>
               <li>{{ p.Birthday}}</li>
               <li>{{ p.Street}}</li>
               <li>{{ p.PLZ}}</li>
               <li>{{ p.Tel}}</li>
-              <li>{{ p.E-Mail}}</li>
+              <li>{{ p.EMail}}</li>
             </ul>
           </div>
         </div>
