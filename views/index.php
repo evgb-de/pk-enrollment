@@ -33,10 +33,13 @@
           <div class="uk-width-medium-1-4"><!-- geschlecht -->
             <div class="uk-form-row">
               <label class="uk-form-label">Geschlecht</label>
-              <input  type="" name="gender{{p.number}}" id="{{p.number}}männl" v-model="p.Gender" value="Männlich">
-              <label :class="{ 'uk-form-danger': p.isDGender }" for="{{p.number}}männl">Männlich</label>
-              <input  type="" name="gender{{p.number}}" id="{{p.number}}weibl" v-model="p.Gender" value="Weiblich">
-              <label :class="{ 'uk-form-danger': p.isDGender }" for="{{p.number}}weibl">Männlich</label>
+              <div>
+                <input type="radio" id="{{p.number}}männl" value="Männlich" v-model="p.Gender">
+                <label :class="{ 'uk-form-danger': p.isDGender }" for="{{p.number}}männl">Männlich</label>
+                <br>
+                <input type="radio" id="{{p.number}}weibl" value="Weiblich" v-model="p.Gender">
+                <label  :class="{ 'uk-form-danger': p.isDGender }" for="{{p.number}}weibl">Weiblich</label>
+              </div>
             </div>
           </div>
           <div class="uk-width-medium-1-4"><!--Geburtsdatum-->
