@@ -21,7 +21,7 @@ $(function () {
                     "Street": "",
                     "PLZ": "",
                     "Tel": "",
-                    "E-Mail": "",
+                    "EMail": "",
                 }],
                 "comment": "",
                 "DSGVO": false,

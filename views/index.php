@@ -21,16 +21,24 @@
           <div class="uk-width-medium-1-4"><!--Vorname-->
             <div class="uk-form-row">
               <label class="uk-form-label">Vorname</label>
-              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDprename }" type="text" placeholder="Vorname" v-model="p.prename">
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDprename }" type="text" placeholder="Vorname" v-model="p.Prename">
             </div>
           </div>
           <div class="uk-width-medium-1-4"><!--Name-->
             <div class="uk-form-row">
               <label class="uk-form-label">Name</label>
-              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDname }" type="text" placeholder="Vorname" v-model="p.name">
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDname }" type="text" placeholder="Vorname" v-model="p.Name">
             </div>
           </div>
-          <!-- geschlecht -->
+          <div class="uk-width-medium-1-4"><!-- geschlecht -->
+            <div class="uk-form-row">
+              <label class="uk-form-label">Geschlecht</label>
+              <input  type="" name="gender{{p.number}}" id="{{p.number}}männl" v-model="p.Gender" value="Männlich">
+              <label :class="{ 'uk-form-danger': p.isDGender }" for="{{p.number}}männl">Männlich</label>
+              <input  type="" name="gender{{p.number}}" id="{{p.number}}weibl" v-model="p.Gender" value="Weiblich">
+              <label :class="{ 'uk-form-danger': p.isDGender }" for="{{p.number}}weibl">Männlich</label>
+            </div>
+          </div>
           <div class="uk-width-medium-1-4"><!--Geburtsdatum-->
             <div class="uk-form-row">
               <label class="uk-form-label">Geburtdatum</label>
@@ -54,13 +62,13 @@
           <div class="uk-width-medium-1-4"><!--Telefon/Handy Nummer-->
             <div class="uk-form-row">
                 <label class="uk-form-label">Telefon/Handy Nummer</label>
-                <input class="uk-width-large-1-1 " v-bind:class="{ 'uk-form-danger' : p.isDTel}"type="text" placeholder="Handy Nummer" v-model="entry.EBMobile">
+                <input class="uk-width-large-1-1 " v-bind:class="{ 'uk-form-danger' : p.isDTel}"type="text" placeholder="Handy Nummer" v-model="p.Tel">
             </div>
           </div>
           <div class="uk-width-medium-1-4"><!--E-Mail Adresse-->
             <div class="uk-form-row">
               <label class="uk-form-label">E-Mail Adresse</label>
-              <input class="uk-width-large-1-1" v-bind:class="{ 'uk-form-danger' : p.isDEBEmail}"type="text" placeholder="E-Mail Adresse" v-model="entry.EBEmail">
+              <input class="uk-width-large-1-1" v-bind:class="{ 'uk-form-danger' : p.isDEBEmail}"type="text" placeholder="E-Mail Adresse" v-model="p.EMail">
             </div>
           </div>
         </div>
@@ -80,8 +88,10 @@
       <div class="uk-form-row">
         <input  type="checkbox" name="dsgvo" id="dsgvo" v-model="entry.dsgvo" value="zugestimmt">
         <label :class="{ 'uk-form-danger': agreeDanger }" for="agreebox">
-          Die hier eingegebenen Daten werden elektronisch gespeichert.<BR>
-          Ich habe die <a href="https://evgb.de/index.php?option=com_content&view=article&id=66&Itemid=105">Datenschutzerklärung</a> gelesen und bin damit einverstanden.
+          <p>
+            Die hier eingegebenen Daten werden elektronisch gespeichert.<BR>
+            Ich habe die <a href="https://evgb.de/index.php?option=com_content&view=article&id=66&Itemid=105">Datenschutzerklärung</a> gelesen und bin damit einverstanden.
+          </p> 
         </label>
       </div>
       <div class="uk-form-row">
