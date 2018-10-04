@@ -7,199 +7,70 @@
 <!-- ToDo: make user-definable enrollments possible, let users define fields, titels and pages ... -->
 <div id="pkenrollment" >
   <h1 class="uk-heading-line uk-text-center">
-    <span>Go West, Go Wild</span> <br>
-    <small>Anmeldung zum Zeltlager 2018</small>
+    <span>Lisas Weihnachtsfreude</span> <br>
+    <small>Anmeldung zum Familienmusical 2018</small>
   </h1>
   <hr>
   <form class="uk-form uk-form-stacked">
-    <!-- Erziehungsberechtigte: -->
-    <div v-if="page === 1">      
-      <h2>Kontakt & Angaben Erziehungsberechtigte:</h2>
-      <br>
-      <div class="uk-grid">
-        <!-- box 1 -->
-        <div class="uk-width-medium-1-2">
-          <div class="uk-panel uk-panel-box">
+    <div v-if="page === 1"><!-- Anmeldung -->
+      <!-- Teilnehmer: -->
+      <div v-for="p in entry.participants" class="uk-panel uk-panel-box" style="margin-bottom: 10px">
+        <h2><span>Teilnehmer {{p.number}}:</span></h2>
+        <!-- Grunddaten -->
+        <div class="uk-grid">
+          <div class="uk-width-medium-1-4"><!--Vorname-->
             <div class="uk-form-row">
-              <label class="uk-form-label">Vorname und Nachname</label>
-              <input class="uk-width-medium-1-1 " v-bind:class="{ 'uk-form-danger' : isDEBName}" type="text" placeholder="Vorname und Nachname" v-model="entry.EBName">
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label">Adresse</label>
-              <input class="uk-width-medium-1-1 " v-bind:class="{ 'uk-form-danger' : isDEBAddress}"type="text" placeholder="Adresse" v-model="entry.EBAddress">
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label">PLZ, Ort</label>
-              <input class="uk-width-medium-1-1 " v-bind:class="{ 'uk-form-danger' : isDEBLocation}"type="text" placeholder="PLZ, Ort" v-model="entry.EBLocation">
+              <label class="uk-form-label">Vorname</label>
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDprename }" type="text" placeholder="Vorname" v-model="p.prename">
             </div>
           </div>
-        </div>
-        <!-- box 1 -->
-        <div class="uk-width-medium-1-2 ">
-          <div class="uk-panel uk-panel-box">
+          <div class="uk-width-medium-1-4"><!--Name-->
             <div class="uk-form-row">
-              <label class="uk-form-label">Telefon Nummer</label>
-              <input class="uk-width-medium-1-1 " v-bind:class="{ 'uk-form-danger' : isDEBTel}"type="text" placeholder="Telefon Nummer" v-model="entry.EBTel">
+              <label class="uk-form-label">Name</label>
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDname }" type="text" placeholder="Vorname" v-model="p.name">
             </div>
+          </div>
+          <div class="uk-width-medium-1-4"><!--Telefon/Handy Nummer-->
             <div class="uk-form-row">
-              <label class="uk-form-label">Handy Nummer</label>
-              <input class="uk-width-medium-1-1 " v-bind:class="{ 'uk-form-danger' : isDEBTel}"type="text" placeholder="Handy Nummer" v-model="entry.EBMobile">
+                <label class="uk-form-label">Telefon/Handy Nummer</label>
+                <input class="uk-width-large-1-1 " v-bind:class="{ 'uk-form-danger' : p.isDTel}"type="text" placeholder="Handy Nummer" v-model="entry.EBMobile">
             </div>
+          </div>
+          <div class="uk-width-medium-1-4"><!--E-Mail Adresse-->
             <div class="uk-form-row">
               <label class="uk-form-label">E-Mail Adresse</label>
-              <input class="uk-width-medium-1-1" v-bind:class="{ 'uk-form-danger' : isDEBEmail}"type="text" placeholder="E-Mail Adresse" v-model="entry.EBEmail">
+              <input class="uk-width-large-1-1" v-bind:class="{ 'uk-form-danger' : p.isDEBEmail}"type="text" placeholder="E-Mail Adresse" v-model="entry.EBEmail">
             </div>
           </div>
         </div>
-      </div>
-      <!-- box 3 -->
-      <div class="uk-grid">
-        <div class="uk-width-medium-1-1 ">
-          <div class="uk-panel uk-panel-box">
-            <div class="uk-form-row">
-              <label class="uk-form-label">Sind sie während des Zeltlagers mit obigen Daten erreichbar?</label>
-              <div class="uk-form-controls">
-                <label><input type="radio" name="Reachable" id="EBReachable" v-model="entry.EBReachable" value="true">Ja</label>
-                <br>
-                <label><input type="radio" name="Reachable" id="EBNotReachable" v-model="entry.EBReachable" value="false">Nein</label>
-              </div>
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label">Weitere Kontakte</label>
-              <div class="uk-form-controls">
-                <textarea class="uk-width-medium-1-1" name="OtherContacts" id="OtherContacts"
-                            cols="30" rows="3" v-model="entry.EBOtherContacts" placeholder="Weitere Kontakte">
-                </textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Teilnehmer: -->
-    <div v-if="page === 2">
-      <div v-for="p in entry.participants" class="uk-panel uk-panel-box">
-        <h2>
-          <span>Teilnehmer {{p.number}}:</span> <br>
-          <small>Teilnahmegebühr des {{p.number}}. Teilnehmers: {{p.price}}€</small>
-        </h2>
-        <!-- grunddaten -->
         <div class="uk-grid">
-          <div class="uk-width-medium-1-2">
+          <div class="uk-width-medium-1-4"><!--Geburtsdatum-->
             <div class="uk-form-row">
-              <label class="uk-form-label">Vorname und Nachname</label>
-              <input class="uk-width-large-1-1 " :class="{ 'uk-form-danger': p.isDname }" type="text" placeholder="Vorname und Nachname" v-model="p.name">
+              <label class="uk-form-label">Geburtdatum</label>
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDBirthday }" type="text" placeholder="Geburtsdatum" v-model="p.Birthday">
             </div>
           </div>
-          <div class="uk-width-medium-1-2">
+          <div class="uk-width-medium-1-4"><!--Straße-->
             <div class="uk-form-row">
-              <label class="uk-form-label">Geburtsdatum</label>
-              <input class="uk-width-1-1" :class="{ 'uk-form-danger': p.isDdateofbirth }" type="text"  placeholder="Geburtsdatum" data-uk-datepicker="{format:'DD.MM.YYYY'}" v-model="p.dateofbirth">
+              <label class="uk-form-label">Straße und Hausnummer</label>
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDStreet }" type="text" placeholder="Straße und Hausnummer" v-model="p.Street">
             </div>
           </div>
-        </div>
-        <!-- wichtiges -->
-        <div class="uk-grid">
-          <div class="uk-width-medium-1-2">
+          <div class="uk-width-medium-1-4"><!--PLZ-->
             <div class="uk-form-row">
-              <label class="uk-form-label">Wichtige Hinweise</label>
-              <textarea class="uk-width-1-1" name="OtherContacts{{p.number}}" id="ImportantInfo{{p.number}}"
-                        cols="30" rows="3" v-model="p.importantInfo" placeholder="z.B.: Medikamente, Bettnässer, ">
-              </textarea>
-            </div>
-            <br>
-            <div class="uk-grid">
-              <div class="uk-width-medium-1-2">
-                <div class="uk-form-row">
-                  <label class="uk-form-label" :class="{ 'uk-form-danger': p.isDbathing }">Badeerlaubnis:</label>
-                  <div class="uk-form-controls":class="{ 'uk-form-danger': p.isDbathing }">
-                    <label><input type="radio" name="bathing" id="bathing" v-model="p.bathing" value="true">Ja, unteer Aufsicht</label>
-                    <br>
-                    <label><input type="radio" name="bathing" id="bathing" v-model="p.bathing" value="false">Nein</label>
-                  </div>
-                </div>
-              </div>
-              <div class="uk-width-medium-1-2">
-                <div class="uk-form-row">
-                  <label class="uk-form-label" :class="{ 'uk-form-danger': p.isDswimmer }">Teilnehmer/in ist ...</label>
-                  <div class="uk-form-controls" :class="{ 'uk-form-danger': p.isDswimmer }">
-                    <label><input type="radio" name="swimmer" id="swimmer" v-model="p.swimmer" value="true">... Schwimmer</label>
-                    <br>
-                    <label><input type="radio" name="swimmer" id="swimmer" v-model="p.swimmer" value="false">... Nichtschwimmer</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="uk-form-row">
-              <label class="uk-form-label" :class="{ 'uk-form-danger': p.isDpkw }">Der/die Teilnehmer/in darf im Privat-PKW der Mitarbeiter mitgenommen werden:</label>
-              <div class="uk-form-controls" :class="{ 'uk-form-danger': p.isDpkw }">
-                <label><input type="radio" name="pkw" id="pkw" v-model="p.pkw" value="true">Ja</label>
-                <br>
-                <label><input type="radio" name="pkw" id="pkw" v-model="p.pkw" value="false">Nein</label>
-              </div>
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label" :class="{ 'uk-form-danger': p.isDwithoutMA }">Der/die Teilnehmer/in darf unter verantwortlichen Gegebenheiten (z.B. bei Zoobesuch, Stadtbummel) in
-kleineren Gruppen auch ohne Aufsichtsperson unterwegs sein:</label>
-              <div class="uk-form-controls" :class="{ 'uk-form-danger': p.isDwithoutMA }">
-                <label><input type="radio" name="withoutMA" id="withoutMA" v-model="p.withoutMA" value="true">Ja</label>
-                <br>
-                <label><input type="radio" name="withoutMA" id="withoutMA" v-model="p.withoutMA" value="false">Nein</label>
-              </div>
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label" :class="{ 'uk-form-danger': p.isDinsurance }">Besteht für den/die Teilnehmer/in eine Haftplichtversicherung?</label>
-              <div class="uk-form-controls" :class="{ 'uk-form-danger': p.isDinsurance }">
-                <label><input type="radio" name="insurance" id="insurance" v-model="p.insurance" value="true">Ja</label>
-                <br>
-                <label><input type="radio" name="insurance" id="insurance" v-model="p.insurance" value="false">Nein</label>
-              </div>
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label" :class="{ 'uk-form-danger': p.isDoperator }">Der/die Teilnehmer/in darf, wenn dies von einem Arzt für nötig gehalten wird, geimpft oder operiert werden:</label>
-              <div class="uk-form-controls" :class="{ 'uk-form-danger': p.isDoperator }">
-                <label><input type="radio" name="operator" id="operator" v-model="p.operator" value="true">Ja</label>
-                <br>
-                <label><input type="radio" name="operator" id="operator" v-model="p.operator" value="false">Nein</label>
-              </div>
+              <label class="uk-form-label">PLZ</label>
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDPLZ }" type="text" placeholder="PLZ" v-model="p.PLZ">
             </div>
           </div>
-          <!-- Hausarzt --> 
-          <div class="uk-width-medium-1-2 ">
+          <div class="uk-width-medium-1-4"><!--Wohnort-->
             <div class="uk-form-row">
-              <label class="uk-form-label">Hausarzt</label>
-              <input class="uk-width-1-1  " type="text" placeholder="Hausarzt" v-model="p.doctor">
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label">Adresse des Hausarztes</label>
-              <input class="uk-width-1-1 " type="text" placeholder="Adresse des Hausarztes" v-model="p.docAddress">
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label">Telefonnummer des Hausarztes</label>
-              <input class="uk-width-1-1 " type="text" placeholder="Telefonnummer des Hausarztes" v-model="p.docTel">
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label">Krankenkasse</label>
-              <input class="uk-width-1-1 " type="text" placeholder="Krankenkasse" v-model="p.kk">
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label">Blutgruppe und Rhesusfaktor falls bekannt</label>
-              <input class="uk-width-1-1 " type="text" placeholder="Blutgruppe und Rhesusfaktor falls bekannt" v-model="p.bloodtype">
-            </div>
-            <div class="uk-form-row">
-              <label class="uk-form-label" :class="{ 'uk-form-danger': p.isDtetanus }">Ist der/ die Teilnehmer/in gegen Wundstarkrampf (Tetanus) geimpft?</label>
-              <div class="uk-form-controls" :class="{ 'uk-form-danger': p.isDtetanus }">
-                <label><input type="radio" name="tetanus" id="tetanus" v-model="p.tetanus" value="true">Ja</label>
-                <input v-if="p.tetanus === 'true'" v-model="p.tetanusDate" type="text" placeholder="Wann?">
-                <br>
-                <label><input type="radio" name="tetanus" id="tetanus" v-model="p.tetanus" value="false">Nein</label>
-              </div>
+              <label class="uk-form-label">Wohnort</label>
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDWohnort }" type="text" placeholder="Wohnort" v-model="p.Wohnort">
             </div>
           </div>
         </div>
       </div>
-      <br>
+      <!-- Controls: -->
       <div class="uk-grid">
         <div class="uk-width-1-2 uk-text-center">
           <button v-if="participants > 1" class="uk-button uk-button-secondary" @click.prevent="removeParticipant()">Teilnehmer Weniger</button>
@@ -209,7 +80,7 @@ kleineren Gruppen auch ohne Aufsichtsperson unterwegs sein:</label>
         </div>
       </div>
     </div>
-    <div v-if="page === 3">
+    <div v-if="page === 2">
       <h2>Hinweise und Teilnahmebedingungen:</h2>
       <div class="uk-form-row">
         <input  type="checkbox" name="agreebox" id="agreebox" v-model="entry.agreeBox" value="zugestimmt">
