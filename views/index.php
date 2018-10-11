@@ -21,30 +21,30 @@
           <div class="uk-width-medium-1-4"><!--Vorname-->
             <div class="uk-form-row">
               <label class="uk-form-label">Vorname</label>
-              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDprename }" type="text" placeholder="Vorname" v-model="p.Prename">
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDPrename }" type="text" placeholder="Vorname" v-model="p.Prename">
             </div>
           </div>
           <div class="uk-width-medium-1-4"><!--Name-->
             <div class="uk-form-row">
-              <label class="uk-form-label">Name</label>
-              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDname }" type="text" placeholder="Vorname" v-model="p.Name">
+              <label class="uk-form-label">Nachname</label>
+              <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDName }" type="text" placeholder="Nachname" v-model="p.Name">
             </div>
           </div>
           <div class="uk-width-medium-1-4"><!-- geschlecht -->
-            <div class="uk-form-row">
+            <div class="uk-form-row" :class="{ 'uk-form-danger': p.isDGender }">
               <label class="uk-form-label">Geschlecht</label>
               <div>
                 <input type="radio" id="{{p.number}}männl" value="Männlich" v-model="p.Gender">
-                <label :class="{ 'uk-form-danger': p.isDGender }" for="{{p.number}}männl">Männlich</label>
+                <label for="{{p.number}}männl">Männlich</label>
                 <br>
                 <input type="radio" id="{{p.number}}weibl" value="Weiblich" v-model="p.Gender">
-                <label  :class="{ 'uk-form-danger': p.isDGender }" for="{{p.number}}weibl">Weiblich</label>
+                <label for="{{p.number}}weibl">Weiblich</label>
               </div>
             </div>
           </div>
           <div class="uk-width-medium-1-4"><!--Geburtsdatum-->
             <div class="uk-form-row">
-              <label class="uk-form-label">Geburtdatum</label>
+              <label class="uk-form-label">Geburtsdatum</label>
               <input class="uk-width-large-1-1" :class="{ 'uk-form-danger': p.isDBirthday }" type="text" placeholder="Geburtsdatum" v-model="p.Birthday">
             </div>
           </div>
@@ -65,13 +65,13 @@
           <div class="uk-width-medium-1-4"><!--Telefon/Handy Nummer-->
             <div class="uk-form-row">
                 <label class="uk-form-label">Telefon/Handy Nummer</label>
-                <input class="uk-width-large-1-1 " v-bind:class="{ 'uk-form-danger' : p.isDTel}"type="text" placeholder="Handy Nummer" v-model="p.Tel">
+                <input class="uk-width-large-1-1 " v-bind:class="{ 'uk-form-danger' : p.isDTel}"type="text" placeholder="Tel. Nummer" v-model="p.Tel">
             </div>
           </div>
           <div class="uk-width-medium-1-4"><!--E-Mail Adresse-->
             <div class="uk-form-row">
               <label class="uk-form-label">E-Mail Adresse</label>
-              <input class="uk-width-large-1-1" v-bind:class="{ 'uk-form-danger' : p.isDEBEmail}"type="text" placeholder="E-Mail Adresse" v-model="p.EMail">
+              <input class="uk-width-large-1-1" v-bind:class="{ 'uk-form-danger' : p.isDEMail}"type="text" placeholder="E-Mail Adresse" v-model="p.EMail">
             </div>
           </div>
         </div>
@@ -88,16 +88,16 @@
     </div>
     <div v-if="page === 2">
       <h2>Weiteres und Zusammenfassung</h2>
-      <div class="uk-form-row">
-        <input  type="checkbox" name="dsgvo" id="dsgvo" v-model="entry.dsgvo" value="zugestimmt">
-        <label :class="{ 'uk-form-danger': agreeDanger }" for="agreebox">
+      <div class="uk-form-row" :class="{ 'uk-form-danger': agreeDanger }">
+        <input  type="checkbox" name="dsgvo" id="dsgvo" v-model="entry.DSGVO" value="true">
+        <label for="dsgvo">
           Die hier eingegebenen Daten werden elektronisch gespeichert.
           Ich habe die <a href="https://evgb.de/index.php?option=com_content&view=article&id=66&Itemid=105">Datenschutzerklärung</a> gelesen und bin damit einverstanden.
         </label>
       </div>
-      <div class="uk-form-row">
-        <input  type="checkbox" name="agreebox" id="agreebox" v-model="entry.agreeBox" value="zugestimmt">
-        <label :class="{ 'uk-form-danger': agreeDanger }" for="agreebox">
+      <div class="uk-form-row" :class="{ 'uk-form-danger': agreeDanger }">
+        <input  type="checkbox" name="agreebox" id="agreebox" v-model="entry.agreeBox" value="true">
+        <label for="agreebox">
           Möglichweise werden von der Veranstaltung Ton- und Bildaufnahmen gemacht, auf denen die Teilnehmer zu hören bzw. zu sehen sind. Damit bin ich einverstanden.
         </label>
       </div>
@@ -123,7 +123,7 @@
     </div>
     <hr>
     <button class="uk-button uk-button-secondary" v-if="page > 1" @click.prevent="back()">zurück</button>
-    <button class="uk-button uk-button-secondary" v-if="page < 3" @click.prevent="forth()">Weiter</button>
-    <button class="uk-button uk-button-primary" v-if="page === 3" @click.prevent="save()">Abschicken</button>
+    <button class="uk-button uk-button-secondary" v-if="page < 2" @click.prevent="forth()">Weiter</button>
+    <button class="uk-button uk-button-primary" v-if="page === 2" @click.prevent="save()">Abschicken</button>
   </form>
 </div>
