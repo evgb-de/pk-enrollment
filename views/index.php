@@ -101,6 +101,9 @@
           Möglichweise werden von der Veranstaltung Ton- und Bildaufnahmen gemacht, auf denen die Teilnehmer zu hören bzw. zu sehen sind. Damit bin ich einverstanden.
         </label>
       </div>
+      <div class="uk-form-row">
+        <textarea class="uk-width-large-1-1" placeholder="z.B.: Allergien, Unverträglichkeiten, ich habe die CD bereits, ..." v-model="entry.comment"></textarea>
+      </div>
       <h2>Bitte prüfen Sie Ihre Angaben:</h2>
       <div class="uk-grid">
         <div v-for="p in entry.participants" class="uk-width-medium-1-4">
