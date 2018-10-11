@@ -97,11 +97,11 @@ $(function () {
                 } else {
                     console.log(this.entry);
                     this.$http.post("/musical/save", { entry: this.entry }, function(data,status,xhr){
-                        console.log(data);
-                        console.log(status + "test");
+                        //console.log(data);
+                        //console.log(status + "test");
                     });
 
-                    // window.open("/thanks", '_self');
+                    window.open("/thanks", '_self');
                 }
               },
             removeParticipant: function(){
