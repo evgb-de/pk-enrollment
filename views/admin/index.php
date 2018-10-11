@@ -3,6 +3,7 @@
 <table id="pkenrollment-table" class="uk-table">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Vorname</th>
       <th>Nachname</th>
       <th>Geburtstag</th>
@@ -15,14 +16,16 @@
   </thead>
   <tbody v-for="entry in entries">
       <tr v-for="p in entry.participants">
-        <td>Prename</td>
-        <td>Name</td>
-        <td>Birtdday</td>
-        <td>Street</td>
-        <td>PLZ</td>
-        <td>Tel</td>
-        <td>EMail</td>
+        <td>{{p.number}}</td>
+        <td>{{p.Prename}}</td>
+        <td>{{p.Name}}</td>
+        <td>{{p.Birthday}}</td>
+        <td>{{p.Street}}</td>
+        <td>{{p.PLZ}}</td>
+        <td>{{p.Tel}}</td>
+        <td>{{p.EMail}}</td>
+        <td>{{entry.comment}}</td>
       </tr>
-      <td>{{entry.DSGVO}}</td>
+      
   </tbody>
 </table>

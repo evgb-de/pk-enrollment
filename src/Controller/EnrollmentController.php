@@ -42,11 +42,11 @@ class EnrollmentController
     $config = $module->config;
     $entries = $config['entries'];
     array_push($entries, $entry);
-    $comma_separated = implode(",", $entry);
+    // $comma_separated = implode(",", $entry);
     
     $body = "";
     $altbody = "";
-    
+    /*
     $mail = new PHPMailer;
 
     $mail->isSMTP();                                // Set mailer to use SMTP
@@ -63,7 +63,7 @@ class EnrollmentController
 
     $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
     $mail->isHTML(true);                                  // Set email format to HTML
-// ToDo: Add formattet Bodies
+ // ToDo: Add formattet Bodies
     $mail->Subject = 'Here is the subject';
     $mail->Body    = $comma_separated;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
@@ -75,7 +75,7 @@ class EnrollmentController
         echo 'Message has been sent';
     }
 
-
+*/
     App::config('pkenrollment')->set('entries', $entries);
     return ['message' => 'success'];
   }
