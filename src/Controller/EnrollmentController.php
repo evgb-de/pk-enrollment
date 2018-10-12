@@ -3,14 +3,14 @@
 namespace Pagekit\pkenrollment\Controller;
 
 use Pagekit\Application as App;
-/*
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require('../Mail/PHPMailer.php');
-require('../Mail/SMTP.php');
-require('../Mail/Exception.php');
-*/
+require('/srv/public/pagekit/packages/evgb-de/pk-enrollment/src/Mail/PHPMailer.php');
+require('/srv/public/pagekit/packages/evgb-de/pk-enrollment/src/Mail/SMTP.php');
+require('/srv/public/pagekit/packages/evgb-de/pk-enrollment/src/Mail/Exception.php');
+
 class EnrollmentController
 {
   /**
@@ -42,11 +42,11 @@ class EnrollmentController
     $config = $module->config;
     $entries = $config['entries'];
     array_push($entries, $entry);
-    // $comma_separated = implode(",", $entry);
+    $comma_separated = implode(",", $entry);
     
     $body = "";
     $altbody = "";
-    /*
+    
     $mail = new PHPMailer;
 
     $mail->isSMTP();                                // Set mailer to use SMTP
@@ -75,7 +75,7 @@ class EnrollmentController
         echo 'Message has been sent';
     }
 
-*/
+
     App::config('pkenrollment')->set('entries', $entries);
     return ['message' => 'success'];
   }
