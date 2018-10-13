@@ -7,8 +7,8 @@
 <!-- ToDo: make user-definable enrollments possible, let users define fields, titels and pages ... -->
 <div id="pkenrollment" >
   <h1 class="uk-heading-line uk-text-center">
-    <span>Lisas Weihnachtsfreude</span> <br>
-    <small>Anmeldung zum Familienmusical 2018</small>
+    <span>Title</span> <br>
+    <small>Small</small>
   </h1>
   <hr>
   <form class="uk-form uk-form-stacked">
@@ -91,22 +91,24 @@
       <div class="uk-form-row" :class="{ 'uk-form-danger': agreeDanger }">
         <input  type="checkbox" name="dsgvo" id="dsgvo" v-model="entry.DSGVO" value="true">
         <label for="dsgvo">
-          Die hier eingegebenen Daten werden elektronisch gespeichert.
-          Ich habe die <a href="https://evgb.de/index.php?option=com_content&view=article&id=66&Itemid=105">Datenschutzerklärung</a> gelesen und bin damit einverstanden.
+           Link to your Data usage agreement
         </label>
       </div>
       <div class="uk-form-row" :class="{ 'uk-form-danger': agreeDanger }">
         <input  type="checkbox" name="agreebox" id="agreebox" v-model="entry.agreeBox" value="true">
         <label for="agreebox">
-          Möglichweise werden von der Veranstaltung Ton- und Bildaufnahmen gemacht, auf denen die Teilnehmer zu hören bzw. zu sehen sind. Damit bin ich einverstanden.
+          Link to your Terms of Usage
         </label>
       </div>
       <div class="uk-form-row">
         <textarea class="uk-width-large-1-1" placeholder="z.B.: Allergien, Unverträglichkeiten, ich habe die CD bereits, ..." v-model="entry.comment"></textarea>
       </div>
+      <div class="uk-form-row">
+        <p>Die Bestätigungs E-Mail geht an Teilnehmer 1.</p>
+      </div>
       <h2>Bitte prüfen Sie Ihre Angaben:</h2>
       <div class="uk-grid">
-        <div v-for="p in entry.participants" class="uk-width-medium-1-4">
+        <div v-for="p in entry.participants" class="uk-width-medium-1-3">
           <div class="uk-panel-box">
             <h3>Teilnehmer {{p.number}}:</h3>
             <!--<small>Teilnahmegebühr des {{p.number}}. Teilnehmers: {{ p.price }}€</small>-->
@@ -114,8 +116,10 @@
               <li>{{ p.Prename}} {{ p.Name}}</li>
               <li>{{ p.Gender}}</li>
               <li>{{ p.Birthday}}</li>
-              <li>{{ p.Street}}, {{ p.PLZ}}</li>
-              <li>{{ p.Tel}} & {{ p.EMail}}</li>
+              <li>{{ p.Street}}</li>
+              <li>{{ p.PLZ}}</li>
+              <li>{{ p.Tel}}</li>
+              <li>{{ p.EMail}}</li>
             </ul>
           </div>
         </div>

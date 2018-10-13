@@ -7,14 +7,15 @@ use Pagekit\Application as App;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require('/srv/public/pagekit/packages/evgb-de/pk-enrollment/src/Mail/PHPMailer.php');
-require('/srv/public/pagekit/packages/evgb-de/pk-enrollment/src/Mail/SMTP.php');
-require('/srv/public/pagekit/packages/evgb-de/pk-enrollment/src/Mail/Exception.php');
+require('/<path>/pagekit/packages/evgb-de/pk-enrollment/src/Mail/PHPMailer.php');
+require('/<path>/pagekit/packages/evgb-de/pk-enrollment/src/Mail/SMTP.php');
+require('/<path>/pagekit/packages/evgb-de/pk-enrollment/src/Mail/Exception.php');
 
 class EnrollmentController
 {
   /**
   * @Access(admin=true)
+  * @Access("Enrollment: Manage Enrollments")
   */
   public function indexAction()
   {
@@ -32,6 +33,7 @@ class EnrollmentController
           'title' => 'Show Enrollments',
       ];
   }
+
   /**
   * @Route("/save")
   * @Request({"entry": "array"}, csrf=true)
@@ -42,35 +44,45 @@ class EnrollmentController
     $config = $module->config;
     $entries = $config['entries'];
     array_push($entries, $entry);
-    $comma_separated = implode(",", $entry);
-    
-    $body = "";
-    $altbody = "";
-    
+    if ($entry["participants"][0]["Gender"] == "Weiblich") {
+        $body = "<h1>Liebe ".$entry["participants"][0]["Prename"].",</h1>";
+    } else {
+        $body = "<h1>Lieber ".$entry["participants"][0]["Prename"].",</h1>";
+    }
+    $body .= "Your Body";
+    if ($entry["participants"][0]["Gender"] == "Weiblich") {
+        $altbody = "Liebe ".$entry["participants"][0]["Prename"].",\n";
+    } else {
+        $altbody = "Lieber ".$entry["participants"][0]["Prename"].",\n";
+    }
+    $altbody .= "Non-HTML Body";
+
     $mail = new PHPMailer;
 
     $mail->isSMTP();                                // Set mailer to use SMTP
-    $mail->Host = 'login23.schwarzkuenstler.info';  // Specify main and backup SMTP servers
+    //$mail->SMTPDebug = 4;                         // enable debugging
+    $mail->Host = '';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                         // Enable SMTP authentication
     $mail->Username = '';                           // SMTP username
-    $mail->Password = '';                           // SMTP password
-    $mail->SMTPSecure = 'tls';                      // Enable encryption, 'ssl' also accepted
+    $mail->Password = '';                               // SMTP password
+    $mail->SMTPSecure = 'tls';                          // Enable encryption, 'ssl' also accepted
 
-    $mail->From = '';                       // From Adress
+    $mail->From = '';                                   // From Adress
     $mail->FromName = '';
-    $mail->addAddress('', 'Name');        // Add a recipient, Name is optional
-    $mail->addReplyTo('', 'Name');   // Add Reply adress, Name is optional
+    $mail->addAddress($entry["participants"][0]["EMail"], $entry["participants"][0]["Prename"]);        // Add a recipient, Name is optional
+    $mail->AddBCC('', 'Name');                          // BCC
+    $mail->addReplyTo('', 'Information');               // Reply
 
     $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
     $mail->isHTML(true);                                  // Set email format to HTML
- // ToDo: Add formattet Bodies
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = $comma_separated;
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->CharSet = "UTF-8";
+    $mail->Subject = 'Subject';
+    $mail->Body    = $body;
+    $mail->AltBody = $altbody;
 
     if(!$mail->send()) {
-        echo 'Message could not be sent.';
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
+        echo $entry["participants"][0]["EMail"];
+        echo ' Mailer Error: ' . $mail->ErrorInfo;
     } else {
         echo 'Message has been sent';
     }

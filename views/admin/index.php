@@ -6,6 +6,7 @@
       <th>ID</th>
       <th>Vorname</th>
       <th>Nachname</th>
+      <th>Geschlecht</th>
       <th>Geburtstag</th>
       <th>Adresse</th>
       <th>PLZ, Ort</th>
@@ -14,18 +15,20 @@
       <th>Kommentar</th>
     </tr>
   </thead>
-  <tbody v-for="entry in entries">
-      <tr v-for="p in entry.participants">
-        <td>{{p.number}}</td>
-        <td>{{p.Prename}}</td>
-        <td>{{p.Name}}</td>
-        <td>{{p.Birthday}}</td>
-        <td>{{p.Street}}</td>
-        <td>{{p.PLZ}}</td>
-        <td>{{p.Tel}}</td>
-        <td>{{p.EMail}}</td>
-        <td>{{entry.comment}}</td>
-      </tr>
-      
+  <tbody >
+      <template v-for="(index, entry) in entries">
+        <tr>
+          <td>{{index}}</td>
+          <td><p v-for="p in entry.participants">{{p.Prename}}</p></td>
+          <td><p v-for="p in entry.participants">{{p.Name}}</p></td>
+          <td><p v-for="p in entry.participants">{{p.Gender}}</p></td>
+          <td><p v-for="p in entry.participants">{{p.Birthday}}</p></td>
+          <td><p v-for="p in entry.participants">{{p.Street}}</p></td>
+          <td><p v-for="p in entry.participants">{{p.PLZ}}</p></td>
+          <td><p v-for="p in entry.participants">{{p.Tel}}</p></td>
+          <td><p v-for="p in entry.participants"><a href="mailto:{{p.EMail}}">{{p.EMail}}</a></p></td>
+          <td>{{entry.comment}}</td>
+        </tr>
+      </template>
   </tbody>
 </table>

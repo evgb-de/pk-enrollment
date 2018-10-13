@@ -95,7 +95,7 @@ $(function () {
                 if (this.entry.agreeBox === false || this.entry.DSGVO === false) {
                     this.agreeDanger = true;
                 } else {
-                    console.log(this.entry);
+                    //console.log(this.entry);
                     this.$http.post("/musical/save", { entry: this.entry }, function(data,status,xhr){
                         //console.log(data);
                         //console.log(status + "test");

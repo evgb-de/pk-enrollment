@@ -27,6 +27,13 @@ return [
     ]
   ],
 
+  'permissions' => [
+
+    'Enrollment: Manage Enrollments' => [
+        'title' => 'Manage Enrollments',
+        'description' => 'Manage Enrollments'
+    ]
+  ],
 
   'config' => [
     'entries' => [
@@ -38,7 +45,7 @@ return [
       'icon'   => 'packages/evgb-de/pk-enrollment/icon.svg',
       'url'    => '@musical',
       'active' => '@musical/*',
-      'access' => 'pkenrollment: manage'
+      'access' => 'pkenrollment: manage || Enrollment: Manage Enrollments'
     ]
   ],
 ];
